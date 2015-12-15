@@ -1,9 +1,9 @@
-import Alt from '../alt';
+import Alt from './alt';
 
 class DataActions {
 
   fetchJson() { 
-    this.fetchYoutubeSuccess();
+    this.fetchJsonSuccess();
   }
 
   fetchJsonSuccess(data) {

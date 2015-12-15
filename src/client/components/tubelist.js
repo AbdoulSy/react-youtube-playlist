@@ -4,6 +4,23 @@ import DataStore from '../flux/DataStore';
 
 export default class TubeList extends Component {
 
+	constructor(props) {
+ 	  super(props);
+ 	  this.state = DataStore.getState();
+ 	  this.onChange = this.onChange.bind(this);
+	}
+
+	componentDidMount() {
+		const url = this.props.url;
+
+  		DataStore.listen(this.onChange);
+    	DataActions.fetchJson(url);
+	}
+
+	onChange() {
+  		this.setState(DataStore.getState());
+	}
+
 	render() {
         return ( 
         		<div>
