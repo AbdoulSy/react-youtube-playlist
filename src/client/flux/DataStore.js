@@ -18,7 +18,7 @@ class DataStore {
     this.items = data;
   }
 
-  onSetPagination(data) {
+  onSetCurrentPage(data) {
     this.current_page = data;
   }
 

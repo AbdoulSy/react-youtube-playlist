@@ -34,8 +34,8 @@ export default class TubeItem extends Component {
 
     truncateText(text) {
         var trunc = this.props.truncate;
-        
-        if(trunc === null)
+
+        if(trunc === null || !text.length)
             return text;
 
         return text.substring(0, trunc) + "...";

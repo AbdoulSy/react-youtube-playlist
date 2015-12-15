@@ -15,8 +15,8 @@ class DataActions {
     return data;
   }
 
-  setPagination() {
-    return ;
+  setCurrentPage(index) {
+    return index;
   }
 
   viewItem(index) {

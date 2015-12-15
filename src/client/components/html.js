@@ -14,13 +14,14 @@ export default class Html extends Component {
 	}
 
 	componentDidMount() {
-		const url = this.props.url;
+		const {config} = this.props;
 
   		DataStore.listen(this.onChange);
-    	DataActions.fetchJson(url);
+    	DataActions.fetchJson(config.url);
 	}
 
 	render() {
+		const {config} = this.props;
 		let {items, view_item} = this.state;
 
 		if(view_item !== null)
@@ -37,13 +38,9 @@ export default class Html extends Component {
 
 		return ( 
 			<div>
-				<TubeList items={items} />
+				<TubeList items={this.showItems()} config={config} />
             <div className="pagination">
-     				<ul>
-     					<li>1</li>
-     					<li>2</li>
-     					<li>3</li>
-     				</ul>
+     				{this.showPagination()}
      			</div>
 			</div>
 		)
@@ -55,6 +52,37 @@ export default class Html extends Component {
 
 	handleBackClick() {
 		DataActions.viewItem(null);
+	}
+
+	showItems() {
+		var {config} = this.props;
+		var {items, current_page} = this.state;
+
+		return items.slice(current_page * config.items_per_page, current_page * config.items_per_page + config.items_per_page)
+	}
+
+	showPagination() {
+		var {config} = this.props;
+		var {items, current_page} = this.state;
+		var pages = Math.ceil(items.length / config.items_per_page);
+
+		var listItems = [];
+
+		for (var i=0; i < pages; i++){
+
+			let className = (i == current_page) ? "selected" : "";
+			let jsx = <li className={className} onClick={this.setCurrentPage.bind(this, i)}>{i+1}</li>;
+ 
+	      listItems.push(jsx);
+		}
+      
+		return (<ul>
+					{listItems}
+              </ul>)
+	}
+
+	setCurrentPage(index) {
+		DataActions.setCurrentPage(index);
 	}
 
 }
