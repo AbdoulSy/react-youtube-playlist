@@ -15,7 +15,11 @@ class DataStore {
   }
 
   onSetItems(data) {
+    for (var key in data)
+        data[key]['keyIndex'] = key;
+   
     this.items = data;
+    
   }
 
   onSetCurrentPage(data) {

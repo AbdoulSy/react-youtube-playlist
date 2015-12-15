@@ -6,22 +6,33 @@ export default class TubeItem extends Component {
 	render() {
         const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const {itemData} = this.props;
-        console.log(itemData);
-
+        
+        var placeholder;
         var date = new Date( itemData.snippet.publishedAt );
+
+        if(this.props.video) {
+            placeholder = 
+                <div className="video">
+                    <iframe width="560" height="349" src={"http://www.youtube.com/embed/" + itemData.snippet.resourceId.videoId + "?rel=0&controls=1&hd=1"} frameborder="0" allowfullscreen></iframe>
+                </div>
+        } else
+            placeholder = <img src={itemData.snippet.thumbnails.high.url} onClick={this.clickHandler.bind(this)} />;
 
         return ( 
             <div>
-                <div className="item-inner">
-                    <div className="image">
-                        <img src={itemData.snippet.thumbnails.high.url} onClick={this.clickHandler.bind(this)} />
-                    </div>
-                    <div className="content">
-                        <div className="content-inner">
-                            <h2 onClick={this.clickHandler.bind(this)}>{itemData.snippet.title}</h2>
-                            <h3>Published on {month[date.getMonth()]} {date.getDay()}, {date.getFullYear()}</h3>
-                            <p>{this.truncateText(itemData.snippet.description)}</p>
+                <div className="item">
+                    <div className="item-inner">
+                        <div className="placeholder">
+                            {placeholder}
                         </div>
+                        <div className="content">
+                            <div className="content-inner">
+                                <h2 onClick={this.clickHandler.bind(this)}>{itemData.snippet.title}</h2>
+                                <h3>Published on {month[date.getMonth()]} {date.getDay()}, {date.getFullYear()}</h3>
+                                <p>{this.truncateText(itemData.snippet.description)}</p>
+                            </div>
+                        </div>
+                        <div className="clearFix"></div>
                     </div>
                 </div>
             </div>
@@ -29,7 +40,7 @@ export default class TubeItem extends Component {
 	}
 
     clickHandler(e) {
-        DataActions.viewItem(this.props.itemIndex);
+        DataActions.viewItem(this.props.itemData.keyIndex);
     }
 
     truncateText(text) {

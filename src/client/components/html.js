@@ -26,22 +26,23 @@ export default class Html extends Component {
 
 		if(view_item !== null)
 			return ( 
-				<div>
-					<div className="detail-heading">
-						<button onClick={this.handleBackClick}>&lgt; Back to list of videos</button>
+				<div className="inner">
+					<div className="dtl-heading">
+						<button className="backButton" onClick={this.handleBackClick}>{"<"} Back to list of videos</button>
 					</div>
-					<div className="detail-body">
-						<TubeItem itemData={items[view_item]} itemIndex={view_item} truncate={null} />
+					<div className="dtl-body">
+						<TubeItem itemData={items[view_item]} itemIndex={view_item} truncate={null} video={true} />
 					</div>
 				</div>
 			)
 
 		return ( 
-			<div>
+			<div className="inner">
 				<TubeList items={this.showItems()} config={config} />
-            <div className="pagination">
+            <div className="pagi">
      				{this.showPagination()}
      			</div>
+     			<div className="clearFix"></div>
 			</div>
 		)
 	}
@@ -57,7 +58,7 @@ export default class Html extends Component {
 	showItems() {
 		var {config} = this.props;
 		var {items, current_page} = this.state;
-
+		
 		return items.slice(current_page * config.items_per_page, current_page * config.items_per_page + config.items_per_page)
 	}
 
@@ -78,7 +79,8 @@ export default class Html extends Component {
       
 		return (<ul>
 					{listItems}
-              </ul>)
+              </ul>
+              )
 	}
 
 	setCurrentPage(index) {

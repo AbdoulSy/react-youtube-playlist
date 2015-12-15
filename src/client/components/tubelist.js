@@ -10,10 +10,11 @@ export default class TubeList extends Component {
         let {config} = this.props;
 
         return ( 
-        		<div>
+        		<div className="youtubeList">
+                    <h1>My YouTube playlist</h1>
                     <div className="items">
         			{items.map(function(val, i, index) {
-			             return <TubeItem itemData={val} itemIndex={i} key={i} truncate={config.truncate_limit} />;
+			             return <TubeItem itemData={val} key={i} truncate={config.truncate_limit} />;
                     })}
                     </div>
         		</div> 
