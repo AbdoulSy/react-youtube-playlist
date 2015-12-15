@@ -8,6 +8,8 @@ var config = {
 		items_per_page: 3
 	}
 
+var style = require("./less/style.less");
+
 ReactDOM.render(
 	<Html config={config} />
   , document.getElementById('root'));
