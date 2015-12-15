@@ -10,7 +10,7 @@ export default class TubeItem extends Component {
                     </div>
                     <div className="content">
                         <div className="content-inner">
-                            <h2></h2>
+                            <h2>A</h2>
                             <h3></h3>
                             <p></p>
                         </div>

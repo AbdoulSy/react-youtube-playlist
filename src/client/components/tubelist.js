@@ -1,31 +1,20 @@
 import React, {Component} from 'react';
-import DataActions from '../flux/DataActions';
-import DataStore from '../flux/DataStore';
+
+import TubeItem from './tubeitem';
 
 export default class TubeList extends Component {
 
-	constructor(props) {
- 	  super(props);
- 	  this.state = DataStore.getState();
- 	  this.onChange = this.onChange.bind(this);
-	}
-
-	componentDidMount() {
-		const url = this.props.url;
-
-  		DataStore.listen(this.onChange);
-    	DataActions.fetchJson(url);
-	}
-
-	onChange() {
-  		this.setState(DataStore.getState());
-  		console.log(this.state.items);
-	}
-
 	render() {
+		let {items} = this.props;
+
         return ( 
         		<div>
-        			<div className="pagination">
+                    <div className="items">
+        			{items.map(function(val, i, index) {
+			             return <TubeItem itemData={val} itemIndex={i} key={i} />;
+                    })}
+                    </div>
+                    <div className="pagination">
         				<ul>
         					<li>1</li>
         					<li>2</li>
