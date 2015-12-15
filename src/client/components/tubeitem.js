@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import DataActions from '../flux/DataActions';
 
 export default class TubeItem extends Component {
 
@@ -13,11 +14,11 @@ export default class TubeItem extends Component {
             <div>
                 <div className="item-inner">
                     <div className="image">
-                        <img src={itemData.snippet.thumbnails.high.url} />
+                        <img src={itemData.snippet.thumbnails.high.url} onClick={this.clickHandler.bind(this)} />
                     </div>
                     <div className="content">
                         <div className="content-inner">
-                            <h2>{itemData.snippet.title}</h2>
+                            <h2 onClick={this.clickHandler.bind(this)}>{itemData.snippet.title}</h2>
                             <h3>Published on {month[date.getMonth()]} {date.getDay()}, {date.getFullYear()}</h3>
                             <p>{this.truncateText(itemData.snippet.description)}</p>
                         </div>
@@ -27,8 +28,17 @@ export default class TubeItem extends Component {
         )
 	}
 
+    clickHandler(e) {
+        DataActions.viewItem(this.props.itemIndex);
+    }
+
     truncateText(text) {
-        return text.substring(0,300) + "...";
+        var trunc = this.props.truncate;
+        
+        if(trunc === null)
+            return text;
+
+        return text.substring(0, trunc) + "...";
     }
 
 }

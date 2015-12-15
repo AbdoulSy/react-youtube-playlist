@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import DataActions from '../flux/DataActions';
 
 import TubeItem from './tubeitem';
 
@@ -11,16 +12,9 @@ export default class TubeList extends Component {
         		<div>
                     <div className="items">
         			{items.map(function(val, i, index) {
-			             return <TubeItem itemData={val} itemIndex={i} key={i} />;
+			             return <TubeItem itemData={val} itemIndex={i} key={i} truncate={300} />;
                     })}
                     </div>
-                    <div className="pagination">
-        				<ul>
-        					<li>1</li>
-        					<li>2</li>
-        					<li>3</li>
-        				</ul>
-        			</div>
         		</div> 
         	)
 	}

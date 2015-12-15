@@ -18,6 +18,10 @@ class DataActions {
   setPagination() {
     return ;
   }
+
+  viewItem(index) {
+   return index;
+  }
   
 }
 

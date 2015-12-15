@@ -7,6 +7,7 @@ class DataStore {
     this.bindActions(DataActions);
     this.items = [];
     this.current_page = 0;
+    this.view_item = null;
   }
 
   onFetchJson() {
@@ -19,6 +20,10 @@ class DataStore {
 
   onSetPagination(data) {
     this.current_page = data;
+  }
+
+  onViewItem(data) {
+    this.view_item = data;
   }
 
 }
