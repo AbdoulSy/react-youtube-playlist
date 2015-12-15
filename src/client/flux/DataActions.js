@@ -1,3 +1,5 @@
+/* Actions to use with our store and state of the app */
+
 import Alt from './alt';
 import request from 'superagent';
 

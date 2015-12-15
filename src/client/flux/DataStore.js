@@ -1,3 +1,5 @@
+/* Our stores will hold the fetched items from Youtube, current pagination, and viewed item */
+
 import Alt from './alt';
 import DataActions from './DataActions';
 

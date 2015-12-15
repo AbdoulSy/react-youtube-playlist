@@ -1,3 +1,5 @@
+/* The view for the list */
+
 import React, {Component} from 'react';
 import DataActions from '../flux/DataActions';
 

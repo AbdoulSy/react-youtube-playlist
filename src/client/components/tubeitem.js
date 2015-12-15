@@ -1,3 +1,5 @@
+/* The component that shows the youtube item either in a list view or on the detail page. */
+
 import React, {Component} from 'react';
 import DataActions from '../flux/DataActions';
 

@@ -1,3 +1,5 @@
+/* The entry point of our app. Here's a small config for the JSON url, truncate chards and page limit. */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Html from './components/html';

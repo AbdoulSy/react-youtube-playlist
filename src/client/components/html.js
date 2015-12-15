@@ -1,3 +1,5 @@
+/* Our main component that connects with the store and determines the views & pagination. */
+
 import React, {Component} from 'react';
 import DataActions from '../flux/DataActions';
 import DataStore from '../flux/DataStore';
@@ -58,7 +60,7 @@ export default class Html extends Component {
 	showItems() {
 		var {config} = this.props;
 		var {items, current_page} = this.state;
-		
+
 		return items.slice(current_page * config.items_per_page, current_page * config.items_per_page + config.items_per_page)
 	}
 
