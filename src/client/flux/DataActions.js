@@ -1,12 +1,17 @@
 import Alt from './alt';
+import request from 'superagent';
 
 class DataActions {
 
-  fetchJson() { 
-    this.fetchJsonSuccess();
+  fetchJson(url) { 
+    request
+    .get(url)
+    .end((err, res) => {
+    	this.setItems(res.body.items);
+    });
   }
 
-  fetchJsonSuccess(data) {
+  setItems(data) {
     return data;
   }
 

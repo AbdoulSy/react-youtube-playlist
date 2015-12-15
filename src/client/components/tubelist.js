@@ -19,6 +19,7 @@ export default class TubeList extends Component {
 
 	onChange() {
   		this.setState(DataStore.getState());
+  		console.log(this.state.items);
 	}
 
 	render() {

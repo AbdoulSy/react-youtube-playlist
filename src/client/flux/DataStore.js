@@ -13,8 +13,8 @@ class DataStore {
     this.items = [];
   }
 
-  onFetchJsonSuccess(data) {
-    this.domains = data;
+  onSetItems(data) {
+    this.items = data;
   }
 
   onSetPagination(data) {
