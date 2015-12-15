@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TubeList from './componentes/tubelist';
 
 ReactDOM.render(
-  <div>It works</div>
+  <TubeList />
   , document.getElementById('root'));
