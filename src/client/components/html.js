@@ -27,7 +27,9 @@ export default class Html extends Component {
 		let {items} = this.state;
 
 		return ( 
-			<TubeList items={items} />
+			<div>
+				<TubeList items={items} />
+			</div>
 		)
 	}
 
